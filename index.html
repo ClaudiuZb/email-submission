@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Submission</title>
+</head>
+<body>
+    <h1>Submit Your Email</h1>
+    <form id="emailForm">
+        <input type="email" id="email" required>
+        <input type="hidden" id="token" name="token">
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('emailForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const token = document.getElementById('token').value;
+            alert(`Email: ${email}, Token: ${token}`);
+            // We'll add actual submission logic later
+        };
+        
+        // Set token from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('token').value = urlParams.get('token');
+    </script>
+</body>
+</html> 
